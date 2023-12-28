@@ -1,4 +1,4 @@
-![슬라이드13](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/7495a32e-4c11-427f-8ca5-4bac6016bf43)![header](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&text=웹개발자%20성장을%20위한%20동영상%20RoadMap%20프로그램%20설계%20및%20구현🚀&animation=twinkling&fontSize=23&fontAlignY=40&fontAlign=60&height=250&width=1325&align=center)
+[header](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&text=웹개발자%20성장을%20위한%20동영상%20RoadMap%20프로그램%20설계%20및%20구현🚀&animation=twinkling&fontSize=23&fontAlignY=40&fontAlign=60&height=250&width=1325&align=center)
 
 <br>
 <br>
@@ -32,127 +32,114 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 **1. 회원가입 및 로그인**<br>
  >*사용자는 회원가입을 통해 VOGUE에 가입하고, 로그인하여 자신의 계정으로 접속할 수 있습니다* <br>
  
- ![슬라이드5](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/655f6e15-c250-4ddd-98b3-2b113042f5b8)
- ![슬라이드6](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/69654032-a2ed-4231-b867-840ef3aba940)
- ![슬라이드7](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/1f72c9f7-5f3d-4c85-95e8-c50c3da8d8d8)
+ ![슬라이드5](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/82b10393-108e-4127-8098-a5ee4af23e9e)
+ ![슬라이드6](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/50cc4a71-aa00-4da7-b4a9-ac29137dbe8c)
+ ![슬라이드7](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/0de2288e-69c7-478c-b955-66bfe4d2f2e7)
+
 
 **2. 개인정보 수정**<br>
  >*사용자는 개인정보를 수정할 수 있으며, AWS의 S3 서비스를 통해 프로필 이미지를 업데이트 할 수 있습니다.* <br>
  
- ![슬라이드8](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/a0bbeaac-6d32-46b6-99ed-4249797478d0)
- ![슬라이드9](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/f1af0845-2038-4e91-97d4-5a960faa778a)
- ![슬라이드10](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/72e42fc4-cf5c-43b5-a908-133e5bd02e23)
+ ![슬라이드8](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/e0d42c04-2b4c-4c05-8602-d30ae3f87a2b)
+ ![슬라이드9](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/12504106-5f69-489c-bb57-8f078f8d006e)
+ ![슬라이드10](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/149d5855-995c-4bbd-8abe-7adb4f5376c7)
 
- 
 **3. 글 목록**<br>
- >*사용자는 네이게이션바를 통해 카테고리별 글 목록을 확인할 수 있습니다.* <br>
+ >*사용자는 네이게이션바를 클릭하여 카테고리별 글 목록을 확인할 수 있습니다.* <br>
  
-![슬라이드13](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/b8140276-e724-4222-8cbd-ed62381b60d0)
-![슬라이드14](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/1070b5b0-45db-46ce-abd1-0e343874706f)
+ ![슬라이드13](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/45261335-ef67-412a-a7e8-3b1fef02b049)
+ ![슬라이드14](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/822f9e7d-5207-4179-88ae-afe508d4fcb8)
 
 
-**4. 공지사항**<br>
- >*운영자는 공지사항 게시판을 통해 학습자들에게 중요한 정보와 업데이트 사항을 공지할 수 있습니다.*<br>
+**4. 댓글**<br>
+ >*댓글 작성자와 현재 세션에 저장된 사용자가 같을 시 수정 및 삭제 기능을 사용할 수 있습니다.* <br>
+ 
+![슬라이드12](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/65755290-f65a-4945-a951-2f4e772afaca)
 
-**5. 강의관리**<br>
- >*사용자의 등급이 Teacher인 경우 강의를 등록 및 수정할 수 있습니다.*<br>
-
-**6. 회원관리**<br>
- >*사용자의 등급이 Owner인 경우 회원등급 관리 및 탈퇴시킬 수 있습니다.*<br>
+**5. 글쓰기**<br>
+ >*사용자가 로그인 상태라면 게시글을 작성할 수 있습니다.* <br>
+ 
+ ![슬라이드11](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/5d1b0614-be77-4752-b4be-a59087b31fed)
 
 <br><br>
 
 ## 💿 Database
-**1. Member**<br> 
+**1. MEMBER**<br> 
 >*사용자의 정보가 저장된 테이블*<br>
 
 | Column     | DataType            | NotNull | Default           | Description        | Key    |
 |------------|---------------------|---------|-------------------|--------------------|--------|
-| id         | int(11)             |   O     |         X         | 사용자의 고유 값  | Primary     |
-| name       | varchar(15)         |   O     |         X         | 사용자의 이름    | |
-| email      | varchar(30)         |   O     |         X         | 사용자의 이메일    | |
-| password   | varchar(255)        |   O     |         X         | 사용자의 비밀번호   |  |
-| phone_number | int(15)           |   X     |         X          | 사용자의 휴대폰 번호 |  |
-| created_at | timestamp           |   O     |  current_timestamp | 가입일     | |
-| rank      | varchar(1)           |   O     |       B       | 사용자의 등급    |  |
+| ID         | INT(4)              |   O     |         X         | 사용자의 고유 값       | PRIMARY |
+| EMAIL      | VARCHAR(30)         |   O     |         X         | 이메일               |         |
+| PASSWORD   | VARCHAR(255)        |   O     |         X         | 비밀번호             |          |
+| NICKNAME   | VARCHAR(30)         |   O     |         X         | 닉네임              |         |
+| GRADE      | VARCHAR(30)         |   X     |       BASIC       | 등급                |         |
+| PROFILE    | LONGTEXT            |   X     | /image/non-profile.png | 프로필 이미지    |         |
+| VISITED_DATE | INT(4)            |   X     |         0         | 방문횟수             |         |
+| CREATED_AT | TIMESTAMP           |   X     | CURRENT_TIMESTAMP | 가입일              |        |
 
 <br>
 
-**2. Board**<br> 
->*사용자의 문의사항이 저장된 테이블*<br>
+**2. MAIN_CTGRY**<br> 
+>*메인 카테고리 테이블* <br>
 
 | Column     | DataType            | NotNull | Default           | Description        | Key    |
 |------------|---------------------|---------|-------------------|--------------------|--------|
-| id         | int(11)             |   O     |         X         | 게시글의 고유 값  | Primary     |
-| title      | varchar(255)        |   O     |         X         | 게시글의 제목    | |
-| content    | longtext            |   O     |         X         | 게시글의 내용    | |
-| created_at | timestamp           |   X     | current_timestamp | 작성일         |  |
-| hit        | int(4)              |   O     |       0           | 게시글의 조회수  |  |
-| author_id  | int(11)             |   O     |         X         | 게시글 작성자의 고유 값    | Foreign |
+| 	ID        | INT(2)              |   O     |         X         | 메인 카테고리 고유 값   | PRIMARY |
+| NAME       | VARCHAR(30)         |   O     |         X         | 제목                |         |
+
 
 <br>
 
-**3. Notice**<br> 
->*관리자의 공지사항이 저장된 테이블*<br>
+**3. SUB_CTGRY**<br> 
+>*서브 카테고리 테이블* <br>
 
 | Column     | DataType            | NotNull | Default           | Description        | Key    |
 |------------|---------------------|---------|-------------------|--------------------|--------|
-| id         | int(11)             |   O     |         X         | 공지사항의 고유 값  | Primary     |
-| title      | varchar(255)        |   O     |         X         | 공지사항의 제목    | |
-| content    | longtext            |   O     |         X         | 공지사항의 내용    | |
-| created_at | timestamp           |   X     | current_timestamp | 작성일         |  |
-| hit        | int(4)              |   O     |       0           | 공지사항의 조회수  |  |
-| author_id  | int(11)             |   O     |         X         | 공지사항의 작성자    | Foreign |
+| ID         | INT(2)              |   O     |         X         | 서브 카테고리 고유 값   | PRIMARY |
+| NAME       | VARCHAR(30)         |   O     |         X         | 제목                |         |
+| PARENT     | INT(2)              |   O     |         X         | 분류                | FOREIGN |
 
 <br>
 
-**4. Comment**<br> 
->*게시글의 댓글이 저장된 테이블*<br>
+**4. POST**<br> 
+>*게시글이 저장된 테이블* <br>
 
 | Column     | DataType            | NotNull | Default           | Description        | Key    |
 |------------|---------------------|---------|-------------------|--------------------|--------|
-| id         | int(11)             |   O     |         X         | 댓글의 고유 값  | Primary     |
-| content    | longtext            |   O     |         X         | 댓글의 내용    | |
-| created_at | timestamp           |   X     | current_timestamp | 작성일         |  |
-| post       | int(11)             |   O     |         X         | 게시글의 고유 값 | Foreign |
-| author_id  | int(11)             |   O     |         X         | 댓글 작성자     | Foreign |
+| ID         | INT(4)              |   O     |         X         | 게시글 고유 값         | PRIMARY |
+| TITLE      | VARCHAR(60)         |   O     |         X         | 제목                 |         |
+| CONTENT    | LONGTEXT            |   O     |         X         | 내용                 |         |
+| PREPEND    | VARCHAR(10)         |   X     |         X         | 말머리               |         |
+| HIT        | INT(4)              |   X     |         0         | 방문 횟수             |         |
+| CREATED_AT | TIMESTAMP           |   X     | CURRENT_TIMESTAMP | 작성일               |         |
+| PUBLIC_OPTION   | CHAR(1)        |   X     |         Y         | 공개 옵션             |         |
+| COMMENT_OPTION  | CHAR(1)        |   X     |         Y         | 댓글 허용 옵션        |          |
+| CTGRY      | INT(2)              |   O     |         X         | 카테고리             | FOREIGN |
+| WRITER     | INT(4)              |   O     |         X         | 작성자              | FOREIGN |  
 
 <br>
 
-**5. category**<br> 
->*동영상의 카테고리 정보가 저장된 테이블*<br>
+**5. COMMENT**<br> 
+>*댓글이 저장된 테이블*<br>
 
 | Column     | DataType            | NotNull | Default           | Description        | Key    |
 |------------|---------------------|---------|-------------------|--------------------|--------|
-| id         | int(11)             |   O     |         X         | 카테고리의 고유 값 | Primary     |
-| discription | varchar(50)        |   O     |         X         | 카테고리의 설명   | |
-| created_at | timestamp           |   X     | current_timestamp | 생성일         |  |
+| ID         | INT(2)              |   O     |         X         | 댓글의 고유 값         | PRIMARY |
+| CONTENT    | LONGTEXT            |   O     |         X         | 내용                |          |
+| CREATED_AT | TIMESTAMP           |   X     | CURRENT_TIMESTAMP | 생성일               |         |
+| WRITER     | INT(2)              |   O     |         X         | 작성자               |         |
+| POST       | INT(2)              |   O     |         X         | 게시글 고유 값         |         |
 
 <br>
 
-**6. video**<br> 
->*동영상의 정보가 저장된 테이블*<br>
+**6. LIKED**<br> 
+>*개시글의 좋아요 정보가 저장된 테이블* <br>
 
 | Column     | DataType            | NotNull | Default           | Description        | Key    |
 |------------|---------------------|---------|-------------------|--------------------|--------|
-| id         | int(11)             |   O     |         X         | 동영상의 고유 값  | Primary     |
-| title      | varchar(60)         |   O     |         X         | 동영상의 내용     | |
-| description |  varchar(150)      |   O     |         X         | 작성일          |  |
-| url        | varchar(50)         |   O     |         X         | 동영상의 url 정보 |  |
-| hit  | int(4)                    |   O     |         0         | 동영상의 조회수    |  |
-| uploader_id  | int(11)           |   O     |         X         | 작성자         | Foreign |
-| uploaded_at  | timestamp         |   O     |  current_timestamp| 작성일         | Foreign |
-| category_id  | int(11)           |   O     |         X         | 카테고리 고유 값    | Foreign |
-
-<br>
-
-**7. wish**<br> 
->*사용자가 관심목록으로 저장한 동영상 정보가 저장된 테이블*<br>
-
-| Column     | DataType            | NotNull | Default           | Description        | Key    |
-|------------|---------------------|---------|-------------------|--------------------|--------|
-| id         | int(11)             |   O     |         X         | 관심목록의 고유 값      |Primary|
-| video_id   | int(11)             |   O     |         X         | 비디오의 고유값        |Foreign|
-| member_id  | int(11)             |   O     |         X         | 사용자의 고유값        |Foreign|
+| ID         | INT(2)              |   O     |         X         | 좋아요 고유 값        | Primary |
+| POST       | INT(2)              |   O     |         X         | 게시글 고유 값         |         |
+| MEMBER     | INT(2)              |   O     |         X         | 사용자 고유 값         |         |
 
 <br><br>
