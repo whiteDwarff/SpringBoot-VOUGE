@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hello.hellospring.comment.mapper.CommentMapper">
+
+    <!-- 댓글 등록 -->
+    <insert id="insertCommentByPostId" parameterType="hello.hellospring.comment.domain.CommentRegisterVO">
+        INSERT INTO COMMENT
+        (CONTENT, WRITER, POST)
+        VALUES(#{content}, #{writer}, #{post})
+    </insert>
+
+    <!-- 디테일 화면에 GET 요청 시 댓글 요청 -->
+    <select id="selectCommentByPostId" parameterType="hello.hellospring.comment.domain.CommentRequestVO" resultType="HashMap">
+        SELECT c.*, m.nickname, m.profile, m.grade
+        FROM
+        comment c JOIN member m
+        ON c.writer = m.id
+        WHERE POST = #{id}
+        ORDER BY ID ${sortOption}
+        LIMIT #{requestCount}, 5
+    </select>
+
+    <!-- 댓글 수정 -->
+    <update id="commentUpdateById" parameterType="hello.hellospring.comment.domain.CommentVO">
+        UPDATE COMMENT SET
+        CONTENT = #{content}
+        WHERE ID = #{id}
+    </update>
+
+    <!-- 댓글 삭제 -->
+    <delete id="commentDeleteById" parameterType="Long">
+        DELETE FROM COMMENT
+        WHERE ID = #{id}
+    </delete>
+
+    <!-- 사용자가 작성한 댓글 반환 -->
+    <select id="getCommentListByMemberId" parameterType="HashMap" resultType="HashMap">
+        SELECT
+            c.content, c.created_at, p.title, p.id,
+            (SELECT count(id) FROM comment c WHERE c.post = p.id) AS count
+        FROM comment c JOIN post p
+        ON c.post = p.id
+        WHERE c.writer = #{id}
+        ORDER BY p.id DESC
+        LIMIT #{amount}, 10
+    </select>
+
+    <!-- 게시글 삭제 시 댓글까지 삭제 진행 -->
+    <delete id="deletePostToComment" parameterType="Long">
+        DELETE FROM COMMENT
+        WHERE POST = #{id}
+    </delete>
+</mapper>

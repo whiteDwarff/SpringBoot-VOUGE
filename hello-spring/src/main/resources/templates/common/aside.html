@@ -1,0 +1,77 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<aside
+  th:fragment="aside"
+  class="color-bk"
+>
+  <!-- 로그인 상태인 경우 사용자의 프로필 -->
+  <div id="profile">
+    <th:block th:if="${session.loginMember != null}">
+      <div>
+        <div id="profile-info" class="flex">
+          <img
+            th:src="${session.loginMember.profile}"
+            class="header-profile"
+          >
+          <div>
+            <a
+              th:href="@{/member/profile/{id}(id=${session.loginMember.id})}"
+              class="hover-underline"
+            >
+              <h4 th:text="${session.loginMember.nickname}"></h4>
+            </a>
+            <span th:utext="'가입일 ' + ${#dates.format(session.loginMember.createdAt, 'yyyy-MM-dd HH:mm:ss')}" class="font-size-s"></span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <li class="profile-card flex between color-666" id="visited-date">
+          <span class="profile-title font-size-s">방문</span>
+          <span th:text="${session.loginMember.visitedDate} + ' 회'" class="profile-content font-size-s"></span>
+        </li>
+        <li class="profile-card flex between color-666">
+          <span class="profile-title font-size-s">내가쓴 게시글</span>
+          <a
+            th:href="@{/member/profile/{id}(id=${session.loginMember.id})}"
+            th:text="${session.loginMember.postCount} + ' 개'"
+             class="profile-content font-size-s hover-underline color-666"
+          ></a>
+        </li>
+        <li class="profile-card flex between color-666">
+          <span class="profile-title font-size-s">내가 쓴 댓글</span>
+          <a
+            th:href="@{/member/profile/{id}(id=${session.loginMember.id})}"
+            th:text="${session.loginMember.commentCount} + ' 개'"
+            class="profile-content font-size-s hover-underline color-666"
+          ></a>
+        </li>
+      </div>
+    </th:block>
+    <!-- 로그인 상태가 아닌 경우 -->
+    <div th:if="${session.loginMember == null}" class="text-center">
+      <h4 class="color-666 normal">로그인 후 이용해주세요.</h4>
+    </div>
+  </div>
+
+    <!-- Main Categories 출력 -->
+    <th:block th:each="mainCtgry : ${#servletContext.getAttribute('mainCtgrys')}">
+      <div class="card">
+      <span th:text="${mainCtgry.name}" class="aside-title bold block"></span>
+      <!-- Sub Categories 출력 -->
+      <li th:each="subCtgry : ${#servletContext.getAttribute('subCtgrys')}" class="aside-content">
+        <a th:href="@{/post/list/{id}(id=${subCtgry.id})}" th:if="${mainCtgry.id == subCtgry.parent}" th:text="${subCtgry.name}" class="aside-content"></a>
+      </li>
+      </div>
+    </th:block>
+
+</aside>
+</body>
+</html>

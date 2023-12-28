@@ -1,0 +1,48 @@
+   /* aside */
+  aside {
+    width: 20%;
+  }
+
+  #profile {
+    padding: 1rem 0;
+  }
+  /* 프로필 */
+  #profile-info {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.6rem;
+  }
+  #profile-info > .y-auto {
+    margin-left: 1rem;
+  }
+  #profile-info > .y-auto > h4 {
+    margin-bottom: 0.4rem;
+  }
+  #visited-date {
+    margin-top: 1rem;
+  }
+  /* 프로필 상세 내역 */
+  .profile-card {
+    margin-bottom: 0.3rem;
+  }
+  .profile-card:last-child {
+    margin-bottom: 0;
+  }
+
+  /* 카테고리 */
+  .card {
+    font-size: 0.8rem;
+  }
+
+  .aside-title {
+    padding: .7rem 0;
+    border-top: 2px solid #606060;
+    border-bottom: 2px solid #606060;
+  }
+
+  .aside-content {
+    /* margin-bottom: 0.2rem; */
+    margin: 0.3rem 0;
+  }
+  .aside-content a {
+    color: #000;
+  }

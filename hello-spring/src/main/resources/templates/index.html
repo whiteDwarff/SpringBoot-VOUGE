@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style/common/ohter.css">
+    <link rel="stylesheet" href="/style/common/header.css">
+    <link rel="stylesheet" href="/style/common/aside.css">
+    <link rel="stylesheet" href="/style/index.css">
+    <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
+    <script th:inline="javascript">
+        if([[${msg}]]) alert([[${msg}]]);
+    </script>
+
+</head>
+
+<body>
+<div class="wrap">
+
+    <header th:replace="/common/header.html :: header"></header>
+
+    <section id="main">
+        <div id="main-wrap" class="flex">
+
+            <!-- side 메뉴 -->
+            <aside th:replace="/common/aside.html :: aside"></aside>
+
+            <!-- 게시글 화면 -->
+            <section class="post-section">
+
+                <!-- 메인 배너 -->
+                <img src="/image/main-banner.png" style="width: 100%;">
+
+                <article class="post-wrap flex between">
+
+                    <!-- 게시판 형식 -->
+                    <div class="post-box">
+                        <div class="post-box-title flex between">
+                            <h4>[[${life[0].name}]]</h4>
+                            <a th:href="@{/post/list/{id}(id=${life[0].ctgry})}" class="font-size-s color-666">
+                                더보기
+                                <i class="fa-solid fa-angle-right font-size-s"></i>
+                            </a>
+                        </div>
+                        <div class="post-box-wrap">
+                            <!-- 하나의 게시글 -->
+                            <th:block th:each="list : ${life}">
+                            <li class="post-list">
+                                <a th:href="@{/post/detail/{id}(id=${list['id']})}" class="flex between">
+                                    <div>
+                                        <span
+                                          th:text="${list['title']}"
+                                          class="post-list-title inline-block color-bk font-size-s"
+                                        ></span>
+                                        <span
+                                          th:text="${list['count'] != 0 ? ' [' + list['count'] + ']' : ''}"
+                                          class="color-red font-size-s"></span>
+                                    </div>
+                                    <span
+                                      th:text="${list['nickname']}"
+                                      class="color-666 font-size-s"
+                                    ></span>
+                                </a>
+                            </li>
+                            </th:block>
+                        </div>
+                    </div>
+                    <div class="post-box">
+                        <div class="post-box-title flex between">
+                            <h4>[[${fashion[0].name}]]</h4>
+                            <a th:href="@{/post/list/{id}(id=${fashion[0].ctgry})}" class="font-size-s color-666">
+                                더보기
+                                <i class="fa-solid fa-angle-right font-size-s"></i>
+                            </a>
+                        </div>
+                        <div class="post-box-wrap">
+                            <!-- 하나의 게시글 -->
+                            <th:block th:each="list : ${fashion}">
+                            <li class="post-list">
+                                <a th:href="@{/post/detail/{id}(id=${list['id']})}" class="flex between">
+                                    <div>
+                                        <span
+                                          th:text="${list['title']}"
+                                          class="post-list-title inline-block color-bk font-size-s"
+                                        ></span>
+                                        <span
+                                          th:text="${list['count'] != 0 ? ' [' + list['count'] + ']' : ''}"
+                                          class="color-red font-size-s"></span>
+                                    </div>
+                                    <span
+                                      th:text="${list['nickname']}"
+                                      class="color-666 font-size-s"
+                                    ></span>
+                                </a>
+                            </li>
+                            </th:block>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </section>
+
+</div>
+</body>
+
+</html>

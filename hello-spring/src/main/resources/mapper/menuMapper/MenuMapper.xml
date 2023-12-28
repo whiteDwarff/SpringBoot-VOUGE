@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hello.hellospring.index.menuMapper.MenuMapper">
+
+    <!-- 메인 카테고리 -->
+    <select id="getMainCtgry" resultType="hello.hellospring.index.domain.MainCtgryVO">
+        SELECT * FROM MAIN_CTGRY;
+    </select>
+
+    <!-- 서브 카테고리 -->
+    <select id="getSubCtgry" resultType="hello.hellospring.index.domain.SubCtgryVO">
+        SELECT * FROM SUB_CTGRY;
+    </select>
+</mapper>

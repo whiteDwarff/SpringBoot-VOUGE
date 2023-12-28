@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<header
+  th:fragment="header"
+  class="color-bk"
+>
+    <div id="header-wrap">
+        <article id="header-logo-box">
+            <h1>
+                <a href="/"><img src="/image/logo.png" id="logo"></a>
+            </h1>
+            <!-- 로그인 상태가 아닌 경우 -->
+            <th:block th:if="${session.loginMember == null}">
+                <div>
+                    <a href="/member/" id="login-btn">LOGIN</a>
+                    <span class="color-fff">
+                        <a href="/member/" class="bg-bk-btn">JOIN</a>
+                    </span>
+                </div>
+            </th:block>
+            <th:block th:if="${session.loginMember != null}">
+                <div>
+                    <span
+                      th:text="${session.loginMember.nickname} + '님 환영합니다'"
+                      class="inline-block margin-x-m"
+                    ></span>
+                    <a href="/member/logout" id="logout-btn" class="bg-bk-btn">Logout</a>
+                </div>
+            </th:block>
+        </article>
+        <article id="nav">
+            <nav>
+                <a href="/">HOME</a>
+                <th:block th:if="${session.loginMember != null}">
+                    <a href="/post/register">ADD</a>
+                    <a href="/member/info">INFO</a>
+                </th:block>
+                <th:block th:if="${session.loginMember == null}">
+                    <a href="/member/">ADD</a>
+                    <a href="/member/">INFO</a>
+                </th:block>
+            </nav>
+        </article>
+    </div>
+    <script type="module">
+        import logout from '/script/common/header.js'
+        logout();
+    </script>
+</header>
+</body>
+</html>

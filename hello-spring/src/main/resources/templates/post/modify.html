@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- ##### SUMMER NOTE ##### -->
+  <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
+  <!--  jQuery, bootstrap -->
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js?after"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+  <!-- summernote css/js-->
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+  <link rel="stylesheet" href="/style/common/ohter.css">
+  <link rel="stylesheet" href="/style/common/header.css">
+  <link rel="stylesheet" href="/style/common/aside.css">
+  <link rel="stylesheet" href="/style/post/register.css">
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- header -->
+  <header th:replace="/common/header.html :: header"></header>
+
+  <section id="main">
+    <div id="main-wrap" class="flex">
+
+      <!-- side 메뉴 -->
+      <aside th:replace="/common/aside.html :: aside"></aside>
+
+      <!-- 글쓰기 폼 -->
+
+      <section class="post-section">
+        <h3 class="font-size-l margin-y-s">글수정</h3>
+        <form id="submit-form" th:action="@{/post/modify/{id}(id=${register['id']})}" method="post">
+          <div class="flex">
+            <!-- 메인 카테고리 -->
+            <select id="main-category" class="pointer border-ccc">
+              <option disabled selected>-- 메인카테고리를 선택해주세요 --</option>
+              <th:block
+                th:each="mainCtgry : ${#servletContext.getAttribute('mainCtgrys')}">
+                <option
+                  th:text="${mainCtgry.name}"
+                  th:value="${mainCtgry.id}"
+                  th:data-set="${mainCtgry.id}"
+                  th:unless="${mainCtgry.id == 1 and session.loginMember.grade != 'Admin'}"
+                >
+                </option>
+              </th:block>
+            </select>
+            <!-- 서브 카테고리 -->
+            <select
+              name="ctgry"
+              id="ctgry"
+              class="pointer border-ccc"
+            >
+              <option value="none">-- 서브카테고리를 선택해주세요 --</option>
+              <th:block th:each="subCtgry : ${#servletContext.getAttribute('subCtgrys')}">
+                <option
+                  th:text="${subCtgry.name}"
+                  th:value="${subCtgry.id}"
+                  th:data-parent="${subCtgry.parent}"
+                  th:selected="${subCtgry.id} == ${register['ctgry']}"
+                ></option>
+              </th:block>
+
+            </select>
+            <!-- 관리자의 공지사항 작성이 아닌 경우 비활성화 -->
+            <select
+              th:value="${register['prepend']}"
+              th:disabled="${session.loginMember.grade != 'Admin'}"
+              name="prepend"
+              id="prepend"
+              class="pointer border-ccc"
+            >
+              <option value="">말머리선택</option>
+              <option value="[필독]">필독</option>
+              <option value="[공지]">공지</option>
+            </select>
+          </div>
+          <!-- 타이틀 작성 -->
+          <input
+            th:value="${register['title']}"
+            name="title"
+            type="text"
+            id="title"
+            class="block border-ccc"
+            placeholder="제목을 입력하세요."
+          >
+          <p id="warnning" class="border-ccc">
+            * 정치, 주식, 코인, 개인 SNS 관련 게시물 작성 불가합니다. <br>
+            * 지속적으로 동일한 내용의 질문은 삼가해주세요. <br>
+            * 타인에 대한 배려를 해주세요. <br>
+            * 답변에 대한 대댓글은 감사를 표현하는 또 하나의 방법입니다.
+          </p>
+          <!-- 내용 작성 -->
+          <textarea
+            th:utext="${register['content']}"
+            name="content"
+            class="border-ccc block summernote"
+            rows="20" placeholder="내용을 입력하세요."
+          ></textarea>
+
+          <!-- 공개 옵션 및 댓글 허용 옵션-->
+          <div id="submit-box" class="flex between border-ccc">
+            <div class="flex align-center">
+              <input
+                th:value="${register['public_option']}"
+                th:checked="${register['public_option'] == 'Y'}"
+                name="public_option"
+                id="public_option"
+                type="checkbox"
+              >
+              <label for="public_option" class="block">공개 설정</label>
+              <input
+                th:value="${register['comment_option']}"
+                th:checked="${register['comment_option'] == 'Y'}"
+                name="comment_option"
+                id="comment_option"
+                type="checkbox"
+              >
+              <label for="comment_option">댓글 허용</label>
+            </div>
+            <button id="submit-btn" class="block bold pointer">등록</button>
+          </div>
+        </form>
+      </section>
+    </div>
+  </section>
+
+</div>
+<script type="module">
+  import summerNote from '/script/post/summerNote.js'
+  import { changeParentOption, submitRegister, changeSelectOption } from '/script/post/register.js'
+
+  summerNote();
+  changeParentOption();
+  changeSelectOption();
+  submitRegister();
+</script>
+</body>
+
+</html>

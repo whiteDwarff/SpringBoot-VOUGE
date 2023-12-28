@@ -1,0 +1,19 @@
+.post-section #profile .header-profile {
+    width: 60px;
+    height: 60px;
+}
+
+.post-section #profile-info {
+    padding: 1.5rem 0 2.3rem 0;
+}
+
+.post-section #profile h4 {
+    font-size: 1.7rem;
+}
+.post-section #profile h4:hover {
+    text-decoration: underline;
+}
+
+#table-view {
+    min-height: 400px;
+}

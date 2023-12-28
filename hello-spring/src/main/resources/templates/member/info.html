@@ -1,0 +1,100 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/style/common/ohter.css">
+  <link rel="stylesheet" href="/style/common/header.css">
+  <link rel="stylesheet" href="/style/common/aside.css">
+  <link rel="stylesheet" href="/style/member/info.css">
+  <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
+  <script>
+    if('[[${result}]]') alert('[[${result}]]');
+  </script>
+</head>
+<body>
+<div class="wrap">
+  <header th:replace="/common/header.html :: header"></header>
+
+  <section id="main">
+    <div id="main-wrap" class="flex">
+
+      <!-- side 메뉴 -->
+      <aside th:replace="/common/aside.html :: aside"></aside>
+
+      <!-- 사용자 정보 view  -->
+      <section class="post-section">
+        <h3 class="font-size-l margin-y-s">개인정보수정</h3>
+        <div id="member-info-wrap">
+          <form id="member-info-form" class="flex" th:action="@{/member/info}"  method="post" enctype="multipart/form-data">
+            <article>
+              <div class="input-wrap margin-y-m">
+                <label for="email" class="block margin-bottom-s">Email</label>
+                <input id="email" th:value="${session.loginMember.email}" disabled/>
+              </div>
+              <div class="input-wrap margin-y-m">
+                <label for="nickname" class="block margin-bottom-s">Nickname</label>
+                <input name="nickname" id="nickname" th:value="${session.loginMember.nickname}"/>
+              </div>
+              <div class="input-wrap  margin-y-m">
+                <label for="password" class="block margin-bottom-s">Password</label>
+                <input id="password" type="password" name="password" placeholder="Password"/>
+              </div>
+              <div class="input-wrap  margin-y-m">
+                <label for="password-chk" class="block margin-bottom-s">Confirm password</label>
+                <input id="password-chk" type="password" placeholder="Confirm password"/>
+              </div>
+            </article>
+
+            <!-- 프로필 이미지 설정 -->
+            <article id="profile-wrap" class="text-center margin-y-m">
+              <div>
+                <div>
+                  <div class="margin-y-s">
+                    <img th:src="${session.loginMember.profile}" class="header-profile thumbnail">
+                  </div>
+                </div>
+                <div>
+                  <div>
+                    <label for="profile-img" class="block pointer margin-y-m">Change your profile image</label>
+                    <!-- 이미지 파일만 업로드 가능하도록 설정 -->
+                    <input type="file" name="file" id="profile-img" class="none"  accept=".jpg, .jpeg, .png">
+                    <button type="submit" id="submit-button" class="pointer block full-width">제출</button>
+                  </div>
+                </div>
+            </article>
+          </form>
+        </div>
+      </section>
+
+
+
+    </div>
+  </section>
+</div>
+
+
+<script type="module">
+  import {
+    addThumbnail,
+  } from "/script/member/info.js"
+
+  import {
+    submitMemberInfo,
+  } from "/script/member/index.js"
+
+  addThumbnail();
+
+  const form = document.getElementById('member-info-form');
+  const nickname = document.getElementById('nickname');
+  const pwd = document.getElementById('password');
+  const pwdChk = document.getElementById('password-chk');
+  const thumbnailValue = document.getElementById('profile-img');
+
+  submitMemberInfo(form, nickname, pwd, pwdChk, thumbnailValue);
+</script>
+</body>
+</html>

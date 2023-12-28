@@ -1,0 +1,138 @@
+.post-section {
+  border-radius: 10px;
+}
+
+.post-comments:last-child {
+  border: none;
+}
+
+textarea {
+  border: none;
+  background-color: #fff;
+}
+
+#add-comments {
+  margin-left: auto;
+}
+
+#update-wrap {
+  position: relative;
+}
+
+#hidden-wrap {
+  width: 100px;
+  text-align: right;
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 3px 3px 3px rgba(107, 107, 107, 0.2);
+  z-index: 9999;
+}
+
+.hidden-btn {
+  padding: 10px 15px;
+}
+
+.hidden-btn:hover {
+  background-color: #f1f1f1;
+}
+
+.hidden-btn:first-child {
+  border-bottom: 1px solid #ccc;
+}
+
+#get-comment-btn {
+  border: none;
+  border-radius: 50%;
+}
+
+.comment-wrap>div {
+  position: relative;
+}
+
+.comment-hidden-wrap {
+  width: 100px;
+  text-align: right;
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 3px 3px 3px rgba(107, 107, 107, 0.2);
+  z-index: 9999;
+}
+
+/* 댓글 수정 textarea */
+
+.comment-wrap, .comment-content-wrap {
+    width: 100% !important;
+}
+.insert-comment-area {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+.insert-comment-area form p {
+  margin: 1rem 2rem;
+}
+
+.insert-comment-area form textarea {
+  padding: 1rem 2rem;
+  width: 96%;
+  min-height: 50px;
+}
+
+.comment-button-wrap {
+  width: 50%;
+  margin: 0 2rem 1rem auto;
+}
+
+.comment-button-wrap button {
+  margin-left: 2rem;
+}
+
+.add-comment-btn {
+  border: none;
+  padding: 0.5rem 1.3rem;
+  background-color: #c1f3d7;
+  border-radius: 5px;
+  color: #03c75a;
+}
+
+.current_option {
+  color: #03c75a;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-thickness: 2px;
+}
+
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h4 {
+  font-size: 13px;
+  margin: 0;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+#note img {
+   max-width: 90%;
+}
+
+.hover-underline:hover {
+    text-decoration: underline !important;
+}
+
+#logo {
+    margin-top: -20px;
+}

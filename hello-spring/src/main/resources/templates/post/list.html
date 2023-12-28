@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- fontAwesome -->
+  <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/style/common/ohter.css">
+  <link rel="stylesheet" href="/style/common/header.css">
+  <link rel="stylesheet" href="/style/common/aside.css">
+  <link rel="stylesheet" href="/style/post/list.css">
+</head>
+<script th:inline="javascript">
+  if([[${msg}]]) alert([[${msg}]]);
+</script>
+<body>
+<div class="wrap">
+
+  <!-- header -->
+  <header th:replace="/common/header.html :: header"></header>
+
+
+  <section id="main">
+    <div id="main-wrap" class="flex">
+
+      <!-- side 메뉴 -->
+      <aside th:replace="/common/aside.html :: aside"></aside>
+
+      <section class="post-section">
+        <article id="post-content">
+          <h3
+            th:text="${ctgryName}"
+            class="font-size-l margin-y-s"
+          ></h3>
+          <table class="text-center font-size">
+            <thead>
+            <tr>
+              <th class="post-title text-">제목</th>
+              <th class="post-writer">작성자</th>
+              <th class="post-date">작성일</th>
+              <th class="post-hit">조회</th>
+              <th class="post-like">좋아요</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- 공지사항인 경우 post-notice, post-notice-title 클래스 추가 -->
+            <th:block th:each="list : ${lists}">
+              <tr>
+                <td class="text-left">
+                  <a th:href="@{/post/detail/{id}(id=${list['id']})}"
+                     th:classappend="${list['prepend'] != null ? 'post-notice-title bold' : ''}"
+                     class="post-title color-666"
+                  >
+                    <span th:text="${list['prepend'] != null ? list['prepend'] + ' ' + list['title'] : list['title']}"></span>
+                    <span th:text="${list['count'] != 0 ? ' [' + list['count'] + ']' : ''}" class="color-red"></span>
+                  </a>
+                </td>
+                <td class="post-writer">
+                  <a
+                    th:href="@{/member/profile/{id}(id=${list['member_id']})}"
+                    th:text="${list['nickname']}"
+                    class="color-666 post-writer-link"
+                  ></a>
+                </td>
+                <td class="post-date">2022.11.16</td>
+                <td
+                  th:text="${list['hit']}"
+                  class="post-hit"
+                ></td>
+                <td
+                  th:text="${list['like_count']}"
+                  class="post-like"
+                ></td>
+              </tr>
+            </th:block>
+            </tbody>
+          </table>
+          <div
+            id="empty-box"
+            class="text-center margin-y-m"
+            th:text="${lists == null or #lists.isEmpty(lists)} ? '등록된 게시글이 존재하지 않습니다.' : ''">
+          </div>
+        </article>
+
+        <article class="margin-y-m">
+          <div id="pagination-wrap" class="flex x-auto"></div>
+        </article>
+
+        <article id="post-seach" class="text-center">
+          <!-- 카테고리 내용 검색 폼  -->
+            <select name="option" id="select-box" class="pointer">
+              <option value="p.title">게시글</option>
+              <option value="m.nickname">작성자</option>
+            </select>
+            <input name="value" type="text" id="post-search-content" placeholder="내용을 입력해주세요.">
+            <input name="ctgry" type="text" id="ctgry-value" class="none">
+            <button type="submit" id="post-search-btn" class="pointer color-fff">검색</button>
+        </article>
+      </section>
+    </div>
+  </section>
+</div>
+
+<script type="module">
+  import {
+    setModelData,
+    setRequestHandler,
+    responsePostData,
+    searchList
+  } from '/script/post/list.js';
+
+   const totalCount = [[${count}]];
+
+   setModelData(totalCount);
+   setRequestHandler();
+   responsePostData();
+
+  searchList();
+
+</script>
+</body>
+</html>

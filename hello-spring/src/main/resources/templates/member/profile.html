@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- fontAwesome -->
+  <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/style/common/ohter.css">
+  <link rel="stylesheet" href="/style/common/header.css">
+  <link rel="stylesheet" href="/style/common/aside.css">
+  <link rel="stylesheet" href="/style/member/profile.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- header -->
+  <header th:replace="/common/header.html :: header"></header>
+
+  <section id="main">
+    <div id="main-wrap" class="flex">
+
+      <!-- side 메뉴 -->
+      <aside th:replace="/common/aside.html :: aside"></aside>
+
+      <!-- 게시글 화면 -->
+      <section class="post-section">
+        <div id="profile">
+          <div>
+            <div id="profile-info" class="flex align-center">
+              <img th:src="${memberInfo['profile']}" class="header-profile">
+              <div class="margin-x-s">
+                <h4 th:text="${memberInfo['nickname']}"></h4>
+                <span id="grade" class="font-size-m bold">[[${memberInfo['grade']}]]</span>
+                <span class="font-size-m color-666 inline-block margin-x-s">
+                  작성글
+                  <b id="post-count" class="color-bk">[[${memberInfo['post_count']}]]</b>
+                </span>
+<!--                  th:text="${'작성댓글 ' + memberInfo['comment_count']}"-->
+                <span class="font-size-m color-666">
+                  작성댓글
+                  <b id="comment-count" class="color-bk">[[${memberInfo['comment_count']}]]</b>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ajax를 통한 데이터 요청 -->
+        <div>
+          <ul id="post-option" class="flex margin-y-s">
+            <li id="post-btn" class="current-option bold pointer">작성글</li>
+            <li id="content-btn" class="margin-x-s bold pointer">댓글단 글</li>
+          </ul>
+          <article id="table-view">
+
+            <!-- 작성글을 클릭했을 때 보이는 테이블 default view -->
+            <table class="text-center font-size">
+              <thead>
+              <tr>
+                <th class="post-title text-center">제목</th>
+                <th class="post-date text-center">작성일</th>
+                <th class="post-hit text-center">조회</th>
+              </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <div id="empty-box" class="text-center margin-y-m"></div>
+          </article>
+
+          <article class="margin-y-m">
+            <div id="pagination-wrap" class="flex x-auto"></div>
+          </article>
+
+        </div>
+      </section>
+    </div>
+
+  </section>
+
+  <script type="module">
+    import {
+      fetchedPostData,
+      setRequestHandler,
+      paginationHandler,
+      btnListener
+    } from '/script/member/profile.js';
+
+    fetchedPostData();
+    btnListener();
+  </script>
+</div>
+</body>
+</html>

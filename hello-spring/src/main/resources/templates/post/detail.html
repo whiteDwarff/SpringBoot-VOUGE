@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!--  jQuery, bootstrap -->
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js?after"></script>
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+  <!-- summernote css/js-->
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+  <!-- fontAwesome -->
+  <script src="https://kit.fontawesome.com/08a7424104.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/style/common/ohter.css">
+  <link rel="stylesheet" href="/style/common/header.css">
+  <link rel="stylesheet" href="/style/common/aside.css">
+  <link rel="stylesheet" href="/style/post/detail.css">
+</head>
+<script th:inline="javascript">
+  if([[${msg}]]) alert([[${msg}]]);
+</script>
+<body>
+<div class="wrap">
+
+  <!-- header -->
+  <header th:replace="/common/header.html :: header"></header>
+
+
+  <section id="main">
+    <div id="main-wrap" class="flex">
+
+      <!-- side 메뉴 -->
+      <aside th:replace="/common/aside.html :: aside"></aside>
+
+      <!-- 글쓰기 폼 -->
+      <section class="post-section border-ccc padding-all-s margin-top-s">
+        <article>
+          <div class="color-green">
+            <a
+              th:href="@{/post/list/{id}(id=${post['CTGRY']})}"
+              id="post-category" class="font-size-s flex align-center"
+            >
+              <!-- 카테고리 이름, 클릭 시 해당 카테고리의 게시판으로 이동-->
+              <span
+                th:text="${post['name']}"
+              ></span>
+              &nbsp;
+              <i class="fa-solid fa-angle-right font-size-s"></i>
+            </a>
+          </div>
+
+          <h3 class="margin-y-m bold font-size-l" th:text="${post['title']}"></h3>
+          <div class="flex between align-center border-bottom-ccc padding-bottom-s">
+            <div class="flex align-center">
+              <!-- 프로필 이미지 -->
+              <img th:src="${post['profile']}" class="header-profile">
+              <div>
+                <a
+                  th:href="@{/member/profile/{id}(id=${post['WRITER']})}"
+                  class="hover-underline"
+                >
+                  <span class="display-name bold" th:text="${post['nickname']}"></span>
+                </a>
+                <span class="grade" th:text="${post['grade']}"></span>
+                <div>
+                  <span class="font-size-s color-grey"
+                        th:utext="${#dates.format(post['CREATED_AT'], 'yyyy-MM-dd HH:mm:ss')}"></span>
+                  <span class="font-size-s color-grey" th:text="${'조회 ' + post['HIT']}"></span>
+                </div>
+              </div>
+            </div>
+            <div class="flex align-center">
+                <span>
+                  <i class="fa-sharp fa-solid fa-comment-dots fa-flip-horizontal"></i>
+                  댓글
+                  <span
+                    th:text="${commentCount != null or commentCount != 0 ? commentCount : 0}"
+                    class="bold comment-count"
+                  ></span>
+                </span>
+              <span id="clip-board" class="block margin-x-s pointer">URL 복사</span>
+              <!-- 포스트 작성자와 현재 세션의 저장된 사용자가 동일한 경우 버튼 활성화 -->
+              <div
+                th:classappend="${session.loginMember != null and post['nickname'] == session.loginMember.nickname ? '' : 'none'}"
+                id="update-wrap"
+                class="pointer"
+              >
+                <i id="update-btn" class="fa-solid fa-ellipsis-vertical color-grey"></i>
+                <div id="hidden-wrap" class="none">
+                  <a
+                    th:href="@{/post/modify/{id}(id=${post['ID']})}"
+                    class="hidden-btn block"
+                  >수정</a>
+                  <a
+                    th:href="@{/post/delete/{ctgry}/{id}(ctgry=${post['CTGRY']}, id=${post['ID']})}"
+                    id="delete-btn"
+                    class="hidden-btn block"
+                  >삭제</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article id="post-contents-wrap" class="padding-top-s">
+          <!-- 게시글 내용 -->
+          <span id="note" th:utext="${post['CONTENT']}"></span>
+          <!-- 좋아요 및 댓글 ajax로 요청 -->
+          <div class="flex padding-bottom-s margin-top-l border-bottom-ccc">
+            <div id="like-btn" class="pointer">
+              <i
+                th:classappend="${!likeState} ? 'fa-sharp' : 'fa-solid'"
+                class="fa-regular fa-heart color-red" id="like-state"></i>
+              좋아요
+              <span
+                th:text="${post['like_count']}"
+                id="like-count" class="bold"></span>
+            </div>
+            <div class="margin-x-s">
+              <i class="fa-sharp fa-solid fa-comment-dots fa-flip-horizontal"></i>
+              댓글
+              <span
+                th:text="${commentCount != null or commentCount != 0 ? commentCount : 0}"
+                class="bold comment-count"
+              ></span>
+            </div>
+          </div>
+          <article>
+            <div class="flex align-top padding-y-s">
+              <span class="bold font-size-m">댓글</span>
+              <!-- ajax를 통해 요청 font-color는 classList로 제어 -->
+              <span id="asc-option-btn" class="pointer block margin-x-s bold current_option">등록순</span>
+              <span id="desc-option-btn" class="pointer bold color-grey">최신순</span>
+            </div>
+            <!-- 댓글 리스트 -->
+            <div class="padding-x-s" id="comment-wrap"></div>
+            <div class="text-center">
+              <button id="get-comment-btn">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
+          </article>
+        </article>
+
+        <article>
+          <form
+            th:disabled="${post['comment_option'] == 'N'}"
+            th:action="@{/comment/insert/{id}(id=${post['ID']})}"
+            th:object="${comment}"
+            method="POST"
+            id="add-comment-form"
+            class="border-ccc margin-y-m"
+          >
+            <textarea
+              th:disabled="${post['comment_option'] == 'N' or session.loginMember == null}"
+              th:placeholder="${post['comment_option'] == 'N' ? '댓글이 허용되지 않는 게시글입니다.' : '댓글을 작성해주세요.'}"
+              th:field="*{content}"
+              class="full-width"
+              rows="5"
+            ></textarea>
+            <button
+              th:disabled="${post['comment_option'] == 'N' or session.loginMember == null}"
+              id="add-comments"
+              class="add-comment-btn pointer block margin-all-s bold"
+            >등록
+            </button>
+          </form>
+        </article>
+      </section>
+    </div>
+  </section>
+</div>
+
+
+<script type="module" th:inline="javascript">
+ import {
+   toggleHiddenWrapHandler,
+   deletePost,
+   setModelData,
+   fetchedCommentList,
+   moreCommentOption,
+   fetchedSortCommentOption,
+   likeToggleHandler,
+   copyClipBoard
+ } from '/script/post/detail.js';
+
+ const totalCount = [[${commentCount}]];  // DB의 데이터 갯수
+ const memberPK = [[${member}]];          // 사용자의 PK
+ let likeState = [[${likeState}]];        // 사용자의 좋아요 상태 변수
+
+
+ toggleHiddenWrapHandler();
+ deletePost();
+ setModelData(totalCount, likeState, memberPK);
+ fetchedCommentList();
+ moreCommentOption();
+ fetchedSortCommentOption();
+ likeToggleHandler();
+ copyClipBoard();
+</script>
+</body>
+
+</html>

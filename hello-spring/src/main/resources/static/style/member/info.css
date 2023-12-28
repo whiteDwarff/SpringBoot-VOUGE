@@ -1,0 +1,31 @@
+  #member-info-form {
+      width: 100%;
+      border-top: 1px solid #666;
+      /* margin-right: 10%; */
+    }
+    #member-info-form article:first-child {
+      width: 70%;
+    }
+    #member-info-form input {
+      width: 80%;
+    }
+    #profile-wrap {
+      width: 30%;
+    }
+    #profile-wrap {
+      width: 20rem;
+      height: 20rem;
+    }
+    #profile-wrap .header-profile {
+      width: 20rem;
+      height: 20rem;
+      margin-right: 0;
+      background-color: #000;
+    }
+    #submit-button {
+        border: none;
+        background-color: #57B894;
+        color: #fff;
+        border-radius: 10px;
+        padding: 1rem 0;
+    }

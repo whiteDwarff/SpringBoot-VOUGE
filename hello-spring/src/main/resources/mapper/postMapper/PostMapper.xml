@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hello.hellospring.post.mapper.PostMapper">
+
+    <!-- 게시글 저장 후 PK 값 반환 -->
+    <insert id="insertPost" parameterType="hello.hellospring.post.domain.RegisterVO">
+         <!-- PK를 통해 하나의 게시글 조회 -->
+        <selectKey resultType="Long" keyProperty="id" keyColumn="id" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+
+        INSERT INTO POST
+        (TITLE, CONTENT, PREPEND, PUBLIC_OPTION, COMMENT_OPTION, CTGRY, WRITER)
+        VALUES(
+            #{title},
+            #{content},
+            <if test="prepend != ''">
+                #{prepend},
+            </if>
+            <if test="prepend == ''">
+                NULL,
+            </if>
+            #{public_option},
+            #{comment_option},
+            #{ctgry},
+            #{writer}
+        )
+    </insert>
+
+    <!-- 게시글의 PK로 게시글 상세화면에 바인딩 될 게시글 조회 -->
+    <select id="selectPostById" parameterType="Long" resultType="HashMap">
+        SELECT
+            m.nickname, m.grade, m.profile, p.*, s.name,
+            (select count(post) from liked l where l.post = p.id) as like_count
+        FROM
+        member m JOIN post p ON m.id = p.writer
+        JOIN sub_ctgry s ON p.ctgry = s.id
+        WHERE p.id =#{id}
+    </select>
+
+    <!-- 게시글에 사용자의 좋아요가 있는지 확인-->
+    <select id="searchLikeByPostId" parameterType="HashMap" resultType="Long">
+        SELECT COUNT(*) FROM LIKED
+        WHERE POST = #{id} AND MEMBER = #{writer}
+    </select>
+
+    <!-- 게시글 좋아요 -->
+    <insert id="insertPostLike" parameterType="HashMap">
+        INSERT INTO LIKED
+        (POST, MEMBER)
+        VALUES(#{post}, #{member})
+    </insert>
+
+    <!-- 게시글 좋아요 취소 -->
+    <delete id="deletePostLike" parameterType="HashMap">
+        DELETE FROM LIKED
+        WHERE POST = #{post} and MEMBER = #{member}
+    </delete>
+
+    <!-- 카테고리의 PK에 등록된 목록 화면에 바인딩 될 모든 게시글 조회-->
+    <select id="selectPostList"  resultType="java.util.HashMap">
+        SELECT
+            p.id, p.prepend, p.title, p.created_at, p.hit,
+            p.comment_option, p.public_option,
+            m.nickname, m.id as member_id, COUNT(c.post) AS count,
+            (select count(post) from liked l where l.post = p.id) as like_count
+        FROM member m
+        JOIN post p ON m.id = p.writer
+        LEFT JOIN comment c ON c.post = p.id
+        WHERE
+            p.ctgry = #{id} AND p.public_option = 'Y'
+        GROUP BY p.id, p.prepend, p.title, p.created_at, p.hit,
+        p.comment_option, m.nickname, p.public_option
+        ORDER BY
+            CASE
+                WHEN p.prepend IS NOT NULL THEN 0
+                ELSE 1
+            END,
+        p.id DESC
+        LIMIT 0, 10
+    </select>
+
+    <!-- 카테고리의 PK를 통해 카테고리명 조회 -->
+    <select id="selectCtgryNameById" parameterType="Long" resultType="String">
+        SELECT NAME
+        FROM sub_ctgry
+        where id = #{id}
+    </select>
+
+    <!-- 게시글 조회수 증가 -->
+    <update id="updateHitById" parameterType="Long">
+        UPDATE post SET
+        hit = hit+1
+        WHERE id = #{id}
+    </update>
+
+    <!-- 게시글 수정 요청 진행 시 데이터 불러오기 -->
+    <select id="modifyGetData" parameterType="Long" resultType="java.util.HashMap">
+        SELECT
+        id, title, content, prepend, public_option, comment_option, ctgry, writer
+        FROM post
+        WHERE id =#{id}
+    </select>
+
+    <!-- 게시글 수정 -->
+    <update id="modifyPostData" parameterType="hello.hellospring.post.domain.RegisterVO">
+        UPDATE POST SET
+        TITLE = #{title},
+        CONTENT = #{content},
+        CTGRY = #{ctgry},
+        PREPEND =
+        <if test="prepend !=''">
+            #{prepend},
+        </if>
+        <if test="prepend == ''">
+            NULL,
+        </if>
+        PUBLIC_OPTION = #{public_option}, COMMENT_OPTION = #{comment_option}
+        WHERE ID = #{id}
+    </update>
+
+    <!-- 게시글 삭제 -->
+    <delete id="deletePostById" parameterType="Long">
+        DELETE FROM POST
+        WHERE ID = #{id}
+    </delete>
+
+    <delete id="deleteLikedById" parameterType="Long">
+        DELETE FROM LIKED
+        WHERE POST = #{id}
+    </delete>
+
+    <!-- ####### join 문으로 디테일에 같이 넘겨주기 !!!-->
+    <!-- 게시글의 댓글 수 -->
+    <select id="selectCommentCountByPostId" parameterType="Long" resultType="int">
+        SELECT COUNT(*)
+        FROM COMMENT
+        WHERE POST = #{id}
+    </select>
+
+    <!-- 카테고리에 총 데이터 개수-->
+    <select id="countByCtgryId" parameterType="Long" resultType="Long">
+        SELECT COUNT(*)
+        FROM POST
+        WHERE CTGRY =  #{id}
+    </select>
+
+ <!-- 페이지네이션-->
+ <select id="selectRestPostListByCtgryId" parameterType="hello.hellospring.post.domain.CriteriaVO" resultType="java.util.HashMap">
+        SELECT
+            p.id, p.prepend, p.title, p.created_at, p.hit,
+            p.comment_option, p.public_option,
+            (select count(post) from liked l where l.post = p.id) as like_count,
+            m.nickname,
+            COUNT(c.post) AS count
+        FROM
+            member m JOIN post p
+        ON
+        m.id = p.writer
+        LEFT JOIN comment c ON c.post = p.id
+        WHERE
+            p.ctgry = #{id} AND p.public_option = 'Y'
+        GROUP BY p.id, p.prepend, p.title, p.created_at, p.hit,
+        p.comment_option, m.nickname, p.public_option
+        ORDER BY
+            CASE
+                WHEN p.prepend IS NOT NULL THEN 0
+                ELSE 1
+            END,
+        p.id DESC
+        LIMIT #{amount}, 10
+    </select>
+
+    <!-- 게시글의 제목 및 작성자를 통한 검색 -->
+    <select id="searchPostList" parameterType="HashMap" resultType="HashMap">
+        SELECT
+            p.id, p.prepend, p.title, p.created_at, p.hit,
+            p.comment_option, p.public_option, p.ctgry,
+            m.nickname,
+            COUNT(c.post) AS like_count
+        FROM
+            member m JOIN post p
+        ON
+            m.id = p.writer
+        LEFT JOIN
+            comment c ON c.post = p.id
+        WHERE
+            ${option} LIKE CONCAT('%', #{value}, '%') AND p.ctgry = #{ctgry}
+        GROUP BY
+            p.id, p.prepend, p.title, p.created_at, p.hit,
+            p.comment_option, m.nickname, p.public_option, p.ctgry
+        ORDER BY
+            CASE
+                WHEN p.prepend IS NOT NULL THEN 0
+                ELSE 1
+            END,
+                p.id DESC
+    </select>
+
+    <select id="searchPostListCount" parameterType="HashMap" resultType="Long">
+        SELECT
+            COUNT(*) AS count
+        FROM
+            member m JOIN post p
+        ON
+            m.id = p.writer
+        WHERE
+            ${option} LIKE CONCAT('%', #{value}, '%') AND p.ctgry = #{ctgry}
+    </select>
+
+    <!-- 사용자가 작성한 게시글 반환 -->
+    <select id="getPostListByMemberId" parameterType="HashMap" resultType="HashMap">
+        SELECT
+            p.title, p.created_at, p.hit, p.id, p.prepend,
+            COUNT(c.id) AS count
+        FROM
+            post p
+            LEFT JOIN
+            comment c ON p.id = c.post
+        WHERE
+            p.writer = #{id}
+        GROUP BY
+            p.title, p.created_at, p.hit, p.id, p.prepend
+        ORDER BY
+            p.id DESC
+        LIMIT
+                #{amount}, 10
+    </select>
+
+    <select id="indexPostList" parameterType="int" resultType="HashMap">
+        SELECT p.id, p.title, p.ctgry, m.nickname, c.name,
+        (SELECT COUNT(c.id) FROM comment c WHERE c.post = p.id) AS count
+        FROM post p
+        JOIN member m ON p.writer = m.id
+        LEFT JOIN sub_ctgry c ON c.id = p.ctgry
+        WHERE p.ctgry = #{id} AND p.public_option != 'N'
+        GROUP BY p.id, p.title, p.ctgry, m.nickname, c.name
+        ORDER BY p.id DESC
+        LIMIT 0, 6;
+    </select>
+</mapper>

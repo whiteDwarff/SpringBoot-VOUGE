@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hello.hellospring.member.memberMapper.MemberMapper">
+
+    <select id="getUserInfo" parameterType="hello.hellospring.member.domain.MemberVO" resultType="hello.hellospring.member.domain.MemberVO">
+        SELECT *
+        FROM MEMBER
+        WHERE ID=#{id}
+    </select>
+
+    <!-- 회원가입 전 중복 이메일 및 중복 닉네임 검사 -->
+    <select id="duplicateMemberCheck" parameterType="hello.hellospring.member.domain.MemberVO" resultType="int">
+        SELECT COUNT(*) FROM MEMBER
+        WHERE
+        EMAIL=#{email} or NICKNAME =#{nickname}
+    </select>
+    
+    <!-- 회원가입  -->
+    <insert id="joinMember" parameterType="hello.hellospring.member.domain.MemberVO">
+        INSERT INTO MEMBER
+        (EMAIL, PASSWORD, NICKNAME)
+        VALUES(#{email}, SHA2(#{password}, 256), #{nickname})
+    </insert>
+
+    <!-- 방문 횟수 추가 -->
+    <update id="visitedUpdate" parameterType="hello.hellospring.member.domain.MemberVO">
+        UPDATE MEMBER SET
+        VISITED_DATE = VISITED_DATE + 1
+        WHERE ID=#{id}
+    </update>
+
+    <!-- 회원 정보 수정 -->
+    <update id="updateInfo" parameterType="hello.hellospring.member.domain.MemberVO">
+        UPDATE MEMBER SET
+        <if test="profile != null">
+            NICKNAME=#{nickname}, PASSWORD=SHA2(#{password},256), PROFILE=#{profile}
+        </if>
+        <if test="profile == null">
+            NICKNAME=#{nickname}, PASSWORD=SHA2(#{password},256)
+        </if>
+        WHERE ID=#{id}
+    </update>
+
+    <!-- ######### 로그인 기능 ######### -->
+    <!--  이메일을 통해 로그인 정보 확인  -->
+    <select id="checkEmailInfo" parameterType="hello.hellospring.member.domain.LoginVO" resultType="int">
+        SELECT count(*)
+        FROM MEMBER
+        WHERE EMAIL=#{email}
+    </select>
+    <!-- 로그인 정보 확인 후 회원 여부 반환 -->
+    <select id="checkMemberInfo" parameterType="hello.hellospring.member.domain.LoginVO" resultType="int">
+        SELECT count(*)
+        FROM MEMBER
+        WHERE EMAIL=#{email} and PASSWORD=SHA2(#{password}, 256);
+    </select>
+
+    <!-- 로그인 -->
+    <select id="loginMemberInfo" parameterType="hello.hellospring.member.domain.LoginVO" resultType="hello.hellospring.member.domain.MemberVO">
+        SELECT
+            id, email, nickname, grade, profile, visited_date, created_at,
+            (SELECT COUNT(id) FROM comment c WHERE c.writer = m.id) AS comment_count,
+            (SELECT COUNT(id) FROM post p WHERE p.writer = m.id) AS post_count
+        FROM member m
+        WHERE
+            EMAIL=#{email} and PASSWORD=SHA2(#{password}, 256)
+    </select>
+
+    <select id="selectMemberInfoById" parameterType="Long" resultType="HashMap">
+        SELECT
+            m.nickname,
+            m.profile,
+            m.grade,
+            m.visited_date,
+            m.id,
+            (
+                SELECT count(id) FROM comment c WHERE c.writer = m.id
+            ) AS comment_count,
+            (
+                SELECT count(id) FROM post p WHERE p.writer = m.id
+            ) AS post_count
+        FROM member m
+        WHERE m.id = #{id};
+    </select>
+</mapper>

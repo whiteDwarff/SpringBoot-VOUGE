@@ -1,0 +1,74 @@
+form {
+  border-top: 1px solid #000;
+  padding-top: 2rem;
+}
+#main-category {
+  width: 35%;
+}
+#ctgry {
+  width: 35%;
+  margin: 0 8% 0 2%;
+}
+
+#prepend {
+  width: 20%;
+}
+
+#title {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+#content {
+  width: 100%;
+  margin: 1rem 0;
+  resize: none;
+}
+
+#warnning,
+#submit-box {
+  padding: 1rem;
+}
+
+#submit-box>div * {
+  margin: 0;
+  cursor: pointer;
+}
+
+#submit-box>div input {
+  margin-right: 0.4rem;
+}
+#submit-box>div label {
+  margin-right: 1rem;
+}
+
+#submit-btn {
+  padding: .5rem 2rem;;
+  background-color: #c1f3d7;
+  border: 2px solid #c1f3d7;
+  border-radius: 5px;
+  color: #03c75a;
+}
+
+html {
+  font-size: 10px !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+h4 {
+   font-size: 13px;
+   margin: 0;
+   font-weight: bold;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+#logo {
+    margin-top: -20px;
+}

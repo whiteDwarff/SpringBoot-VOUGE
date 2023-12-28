@@ -1,0 +1,61 @@
+#post-section {
+  width: 77%;
+  margin-left: 3%;
+  /* background-color: #ff0; */
+}
+
+.post-wrap {
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+/* 이미지 박스를 가진 게시글 */
+.post-box {
+  width: 49%;
+  margin-bottom: 2rem;
+}
+
+.post-box-title {
+  padding: 0.4rem 0;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #000;
+}
+
+.post-box:nth-child(2n) {
+  margin-left: 2%;
+}
+
+.post-box-wrap {
+  flex-wrap: wrap;
+}
+
+.post-box-content {
+  width: 32%;
+}
+
+.post-box-content-img {
+  width: 100%;
+  height: 146.02px;
+  background-color: #ccc;
+}
+
+.post-box-wrap>.post-box-content:nth-child(2),
+.post-box-wrap>.post-box-content:nth-child(5),
+.post-box-wrap>.post-box-content:nth-child(8) {
+  margin: 0 2%;
+}
+
+.post-box-content-content {
+  margin: 0.2rem 0;
+}
+
+/* 리스트 형식의 게시글 */
+.post-list {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #b0b0b0;
+}
+.post-list-title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 290px;
+  overflow: hidden;
+}

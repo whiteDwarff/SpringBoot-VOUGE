@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/style/common/ohter.css">
+  <link rel="stylesheet" href="/style/common/header.css">
+  <link rel="stylesheet" href="/style/member/login.css">
+  <script th:inline="javascript">
+    if([[${msg}]]) alert([[${msg}]]);
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <header th:replace="/common/header.html :: header"></header>
+
+    <div id="container" class="container">
+      <form id="join-form" method="post" action="/member/join">
+        <!-- 회원가입 -->
+        <div class="row">
+          <div class="col align-items-center flex-col sign-up">
+            <div class="form-wrapper align-items-center">
+              <div class="form sign-up">
+                <div class="input-group">
+                  <input id="nickname" type="text" placeholder="Nickname" name="nickname">
+                </div>
+                <div class="input-group">
+                  <input id="join-email" type="email" placeholder="Email" name="email">
+                </div>
+                <div class="input-group">
+                  <input id="join-pwd" type="password" placeholder="Password" name="password">
+                </div>
+                <div class="input-group">
+                  <input id="join-pwd-chk" type="password" placeholder="Confirm password">
+                </div>
+                <button type="submit">Sign up</button>
+                <p>
+                  <span>Already have an account?</span>
+                  <b onclick="toggle()" class="pointer">Sign in here</b>
+                </p>
+              </div>
+            </div>
+      </form>
+    </div>
+
+    <!-- 로그인 -->
+    <div class="col align-items-center flex-col sign-in">
+      <form id="login-form" th:action="@{/member/login}" th:object="${loginInfo}" method="post">
+        <div class="form-wrapper align-items-center">
+          <div class="form sign-in">
+            <div class="input-group">
+              <input type="text" placeholder="Eamil" th:field="*{email}">
+            </div>
+            <div class="input-group">
+              <input type="password" placeholder="Password" th:field="*{password}">
+            </div>
+            <button type="submit">Sign in</button>
+            <p>
+              <span>Don't have an account?</span>
+              <b onclick="toggle()" class="pointer">Sign up here</b>
+            </p>
+          </div>
+        </div>
+        <div class="form-wrapper"></div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row content-row">
+    <div class="col align-items-center flex-col">
+      <div class="text sign-in">
+        <h2>Welcome</h2>
+      </div>
+      <div class="img sign-in"></div>
+    </div>
+
+    <div class="col align-items-center flex-col">
+      <div class="img sign-up"></div>
+      <div class="text sign-up">
+        <h2>Join with us</h2>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+  let container = document.getElementById('container')
+
+  toggle = () => {
+  container.classList.toggle('sign-in')
+  container.classList.toggle('sign-up')
+  }
+
+  setTimeout(() => {
+  container.classList.add('sign-in')
+  }, 200)
+</script>
+<script type="module">
+  import {
+    submitLoginInfo,
+    submitMemberInfo
+  } from "/script/member/index.js"
+
+  const form = document.getElementById('join-form');
+  const nickname = document.getElementById('nickname');
+  const pwd = document.getElementById('join-pwd');
+  const pwdChk = document.getElementById('join-pwd-chk');
+  const email = document.getElementById('join-email');
+
+  submitLoginInfo();
+  submitMemberInfo(form, nickname, pwd, pwdChk, email);
+</script>
+</body>
+</html>
