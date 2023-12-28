@@ -2,11 +2,16 @@
 <br>
 <br>
  <div align="center">
-  <img src="https://img.shields.io/badge/Java-4B4B77?style=flat&logo=java&logoColor=white"/>
-   <img src="https://img.shields.io/badge/Apache Tomcat-F8DC75?style=flat&logo=Apache Tomcat&logoColor=black"/>
+  <img src="https://img.shields.io/badge/SpringBoot-6DB33F?style=flat&logo=Spring Boot&logoColor=white"/>
+  <img src="https://img.shields.io/badge/thymeleaf-005F0F?style=flat&logo=Thymeleaf&logoColor=white"/>
+  <img src="https://img.shields.io/badge/FontAwesome-528DD7?style=flat&logo=Font Awesome&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Amazone S3-569A31?style=flat&logo=Amazon S3&logoColor=white"/>
+  <br><br>
   <img src="https://img.shields.io/badge/MariaDB-003545?style=flat&logo=MariaDB&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Java-4B4B77?style=flat&logo=java&logoColor=white"/>
   <img src="https://img.shields.io/badge/html-E34F26?style=flat&logo=html5&logoColor=white"/>
   <img src="https://img.shields.io/badge/css-1572B6?style=flat&logo=css3&logoColor=white"/>
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white"/>
  </div>
 <br><br>
 
@@ -23,7 +28,7 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 **5. HTML / CSS**<br>
 **6. JavaScript**<br>
 **7. Ajax**<br>
-**8. fontAssome**<br>
+**8. FontAwesome**<br>
 **9. SummerNote**<br>
 
 <br><br>
