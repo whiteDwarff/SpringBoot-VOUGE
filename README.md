@@ -163,7 +163,6 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
   - 로그인 후 index 화면으로 redirect 됩니다.
   - aside의 상단에 `로그인 후 이용해주세요.` 멘트가 사용자의 프로필로 변경되고 header에 로그아웃 버튼이 활성화 됩니다.
 <img width="1090" alt="login" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/c23fbbad-14a6-4a19-8bd0-0cf8376453d4">
-션
 <img width="1116" alt="index02" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/4cc2a9e9-4673-4b6f-b1c4-9cff6b71394a">
 
 <br><br>
@@ -187,7 +186,7 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 
 <br><br>
 
- - 로그인된 사용자가 현재 게시글이 `좋아요`를 눌렀을 경우 `backgroud`가 있는 하트가 보여집니다.
+ - 로그인된 사용자가 현재 게시글에 `좋아요`를 눌렀을 경우 `backgroud`가 있는 하트가 보여집니다.
  - 로그인 세션이 없거나 `좋아요`를 누르지 않은 경우 `border`가 있는 하트가 보여집니다. 
 <img width="1098" alt="detailLike" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/51b18fa0-0f0f-471d-a9dd-22e008e9b357">
 <img width="1098" alt="detailNonlike" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/62a4c4f1-0886-4338-8414-fc9ecedb5c36">
