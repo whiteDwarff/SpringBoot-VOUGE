@@ -36,6 +36,3 @@ out/
 ### VS Code ###
 .vscode/
 
-# Spring Boot 애플리케이션 프로퍼티스 포함
-!**/src/main/resources/application.properties
-
