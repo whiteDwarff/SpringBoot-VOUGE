@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&text=웹개발자%20성장을%20위한%20동영상%20RoadMap%20프로그램%20설계%20및%20구현🚀&animation=twinkling&fontSize=23&fontAlignY=40&fontAlign=60&height=250&width=1325&align=center)
+![슬라이드13](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/7495a32e-4c11-427f-8ca5-4bac6016bf43)![header](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&text=웹개발자%20성장을%20위한%20동영상%20RoadMap%20프로그램%20설계%20및%20구현🚀&animation=twinkling&fontSize=23&fontAlignY=40&fontAlign=60&height=250&width=1325&align=center)
 
 <br>
 <br>
@@ -41,10 +41,16 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
  
  ![슬라이드8](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/a0bbeaac-6d32-46b6-99ed-4249797478d0)
  ![슬라이드9](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/f1af0845-2038-4e91-97d4-5a960faa778a)
+ ![슬라이드10](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/72e42fc4-cf5c-43b5-a908-133e5bd02e23)
+
  
-**3. 질문과 답변**<br>
- >*사용자들은 질문과 답변 게시판을 통해 서로 도움을 주고 받을 수 있으며, 지식을 공유할 수 있습니다.* <br>
+**3. 글 목록**<br>
+ >*사용자는 네이게이션바를 통해 카테고리별 글 목록을 확인할 수 있습니다.* <br>
  
+![슬라이드13](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/b8140276-e724-4222-8cbd-ed62381b60d0)
+![슬라이드14](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/1070b5b0-45db-46ce-abd1-0e343874706f)
+
+
 **4. 공지사항**<br>
  >*운영자는 공지사항 게시판을 통해 학습자들에게 중요한 정보와 업데이트 사항을 공지할 수 있습니다.*<br>
 
