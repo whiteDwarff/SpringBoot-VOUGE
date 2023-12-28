@@ -161,9 +161,9 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 
   - 로그인 화면입니다.
   - 로그인 후 index 화면으로 redirect 됩니다.
-  - aside의 상단에 '로그인 후 이용해주세요' 멘트가 사용자의 프로필로 갱신되고 header에 로그아웃 버튼이 활성화 됩니다.
+  - aside의 상단에 `로그인 후 이용해주세요.` 멘트가 사용자의 프로필로 변경되고 header에 로그아웃 버튼이 활성화 됩니다.
 <img width="1090" alt="login" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/c23fbbad-14a6-4a19-8bd0-0cf8376453d4">
-
+션
 <img width="1116" alt="index02" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/4cc2a9e9-4673-4b6f-b1c4-9cff6b71394a">
 
 <br><br>
@@ -171,7 +171,7 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
  **3. Post list**<br> 
   - `패션정보` 카테고리의 게시글 목록입니다.
   - `[]` 안에 숫자를 통해 몇개의 댓글이 있는지 확인 할 수 있으며, 작성자, 작성일, 조회수, 좋아요 개수를 확인할 수 있습니다.
-  - 페이지네이션을 사용하여 구현하였습니다.
+  - `페이지네이션`을 사용하여 구현하였습니다.
   - 검색폼을 통해 게시글 및 작성자를 검색할 수 있습니다.
 <img width="1105" alt="postlist" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/6c8c4d08-9f46-44e9-a63a-f34e115d8a8a">
 
@@ -214,6 +214,32 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 
 <br><br>
 
+ **6. Add post**<br> 
+  - 게시글을 작성할 수 있는 화면입니다.
+  - 로그인 상태가 아닌 경우 해당 페이지에 접근할 수 없습니다.
+  - 로그인한 회원의 등급이 `Admin`이 아닐 경우 특정 카테고리와 말머리를 선택할 수 없습니다.
+  - 게시글의 공개 옵션 및 댓글 허용 옵션을 선택할 수 있습니다.
+<img width="1051" alt="addPost" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/c3228f56-9efe-4abd-8447-e8801c39db17">
 
-    
+<br><br>
+
+ - 댓글 허용 옵션이 체크 되지 않은 경우 해당 게시글 댓글 화면입니다.
+ - `댓글이 허용되지 않는 게시글입니다.` 라는 안내 멘트가 출력됩니다.  
+<img width="1051" alt="commentOptionNon" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/18f96df6-e783-47dd-b850-ee54cd58c8b0">
+
+<br><br>
+
+ **7. Profile**<br> 
+  - 사용자의 프로필 화면입니다.
+  - `ajax`와 `페이지네이션`을 통해 구현하였습니다.
+  - 사용자가 작성한 글과 댓글단 글을 확인할 수 있습니다.
+  - 현재 세션에 로그인된 사용자와 현재 페이지의 사용자가 일치하다면 공개옵션이 'N'인 작성글도 확인할 수 있습니다.
+  - 작성글 입니다.
+<img width="1069" alt="profilePostList" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/39330e6d-3875-4cb6-9231-36c333adb1a2">
+
+<br><br>
+
+ - 댓글단 글 입니다.
+ - 두개의 `table` 태그를 사용한 것이 아닌 하나의 테이블에서 `javascript`를 통해 동적으로 사용하였습니다.
+<img width="1075" alt="profileCommentList" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/5bdf4800-3266-4bb0-b2b6-de8047953ff7">
 
