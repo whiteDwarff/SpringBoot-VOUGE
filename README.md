@@ -128,8 +128,8 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 | ID         | INT(2)              |   O     |         X         | 댓글의 고유 값         | PRIMARY |
 | CONTENT    | LONGTEXT            |   O     |         X         | 내용                |          |
 | CREATED_AT | TIMESTAMP           |   X     | CURRENT_TIMESTAMP | 생성일               |         |
-| WRITER     | INT(2)              |   O     |         X         | 작성자               |         |
-| POST       | INT(2)              |   O     |         X         | 게시글 고유 값         |         |
+| WRITER     | INT(2)              |   O     |         X         | 사용자 고유 값         | FOREIGN |
+| POST       | INT(2)              |   O     |         X         | 게시글 고유 값         | FOREIGN |
 
 <br>
 
@@ -139,7 +139,7 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 | Column     | DataType            | NotNull | Default           | Description        | Key    |
 |------------|---------------------|---------|-------------------|--------------------|--------|
 | ID         | INT(2)              |   O     |         X         | 좋아요 고유 값        | Primary |
-| POST       | INT(2)              |   O     |         X         | 게시글 고유 값         |         |
-| MEMBER     | INT(2)              |   O     |         X         | 사용자 고유 값         |         |
+| POST       | INT(2)              |   O     |         X         | 게시글 고유 값        | FOREIGN |
+| MEMBER     | INT(2)              |   O     |         X         | 사용자 고유 값        | FOREIGN |
 
 <br><br>
