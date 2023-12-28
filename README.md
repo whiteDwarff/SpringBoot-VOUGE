@@ -29,19 +29,22 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 
 ## ❗️ Function
 **1. 회원가입 및 로그인**<br>
- >*사용자는 회원가입을 통해 VOGUE에 가입하고, 로그인하여 자신의 계정으로 접속할 수 있습니다* <br>
+ >*사용자는 회원가입을 통해  VOGUE에 가입하고, 로그인하여 자신의 계정으로 접속할 수 있습니다* <br>
  
- ![슬라이드5](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/82b10393-108e-4127-8098-a5ee4af23e9e)
- ![슬라이드6](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/50cc4a71-aa00-4da7-b4a9-ac29137dbe8c)
- ![슬라이드7](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/0de2288e-69c7-478c-b955-66bfe4d2f2e7)
+ <img width="1470" alt="join" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/aede1c85-403e-42ea-9537-b244d8b5a154">
+<img width="1470" alt="login" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/00ef2b68-d44b-490a-9964-720628eb63aa">
+<img width="1470" alt="hit" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/cc22eb32-0c6d-4f94-bc10-82b71fc76e09">
 
+ <br><br>
 
 **2. 개인정보 수정**<br>
  >*사용자는 개인정보를 수정할 수 있으며, AWS의 S3 서비스를 통해 프로필 이미지를 업데이트 할 수 있습니다.* <br>
  
- ![슬라이드8](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/e0d42c04-2b4c-4c05-8602-d30ae3f87a2b)
- ![슬라이드9](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/12504106-5f69-489c-bb57-8f078f8d006e)
- ![슬라이드10](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/149d5855-995c-4bbd-8abe-7adb4f5376c7)
+<img width="1470" alt="info01" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/eed39500-8e7c-485f-a82b-571bb3bb1f2b">
+<img width="1470" alt="info02" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/60451595-897a-4735-b878-d18ab9421569">
+ <img width="1470" alt="s3" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/1d9ba6da-59bd-4a8c-8abf-af380676cca0">
+
+ <br><br>
 
 **3. 글 목록**<br>
  >*사용자는 네이게이션바를 클릭하여 카테고리별 글 목록을 확인할 수 있습니다.* <br>
