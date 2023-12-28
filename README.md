@@ -187,8 +187,32 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 
 <br><br>
 
+ - 로그인된 사용자가 현재 게시글이 `좋아요`를 눌렀을 경우 `backgroud`가 있는 하트가 보여집니다.
+ - 로그인 세션이 없거나 `좋아요`를 누르지 않은 경우 `border`가 있는 하트가 보여집니다. 
+<img width="1098" alt="detailLike" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/51b18fa0-0f0f-471d-a9dd-22e008e9b357">
+<img width="1098" alt="detailNonlike" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/62a4c4f1-0886-4338-8414-fc9ecedb5c36">
+
+
+<br><br>
+
  **5. Comment**<br> 
   - 게시글의 디테일 화면에서 스크롤하여 확인할 수 있는 댓글 목록입니다.
+  - 작성자의 닉네임을 클릭 시 작성자의 프로필로 이동할 수 있습니다.
+  - `ajax`를 통해 댓글이 5개씩 보여지며, `+` 버튼을 통해 남아 있는 게시글을 5개씩 불러올 수 있습니다.
+
+ <img width="1098" alt="comment" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/9e3d72ee-cc84-4bbf-94d5-d97c9fb629c8">
+
+<br><br>
+
+  - 댓글 작성자와 현재 세션에 저장된 사용자가 같을 시 수정 및 삭제를 할 수 있는 `hidden-button`이 활성화됩니다.
+    
+<img width="1098" alt="commentHidden" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/e1063baa-fa73-4cac-8e24-218644bfa695">
+
+  - `수정` 버튼을 클릭하면 현재 댓글을 수정할 수 있는 `form`이 활성화되며, 수정 및 삭제 또한 `ajax`로 구현하였습니다.
+
+<img width="1098" alt="commentUpdate" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/cc64c41b-31f5-43bc-bd93-042f4f728e73">
+
+<br><br>
 
 
     
