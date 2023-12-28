@@ -22,8 +22,9 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 **4. MariaDB**<br>
 **5. HTML / CSS**<br>
 **6. JavaScript**<br>
-**7. fontAssome**<br>
-**8. SummerNote**<br>
+**7. Ajax**<br>
+**8. fontAssome**<br>
+**9. SummerNote**<br>
 
 <br><br>
 
@@ -49,19 +50,22 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 **3. 글 목록**<br>
  >*사용자는 네이게이션바를 클릭하여 카테고리별 글 목록을 확인할 수 있습니다.* <br>
  
- ![슬라이드13](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/45261335-ef67-412a-a7e8-3b1fef02b049)
- ![슬라이드14](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/822f9e7d-5207-4179-88ae-afe508d4fcb8)
+<img width="1470" alt="list01" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/0db466f7-fa56-4fd2-8bee-173406d09a66">
+<img width="1470" alt="list02" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/d6afbba7-129c-4a05-bb30-a58e820e656a">
 
+ <br><br>
 
 **4. 댓글**<br>
  >*댓글 작성자와 현재 세션에 저장된 사용자가 같을 시 수정 및 삭제 기능을 사용할 수 있습니다.* <br>
  
-![슬라이드12](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/65755290-f65a-4945-a951-2f4e772afaca)
+<img width="1470" alt="comment" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/914caa69-871f-489f-b096-b052655802d6">
 
+<br><br>
+ 
 **5. 글쓰기**<br>
  >*사용자가 로그인 상태라면 게시글을 작성할 수 있습니다.* <br>
  
- ![슬라이드11](https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/5d1b0614-be77-4752-b4be-a59087b31fed)
+<img width="1470" alt="addpost" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/e6358be9-f290-41cd-80dc-93052aa6e4bc">
 
 <br><br>
 
