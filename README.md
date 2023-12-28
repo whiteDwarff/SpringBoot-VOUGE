@@ -1,4 +1,3 @@
-[header](https://capsule-render.vercel.app/api?type=waving&color=timeGradient&text=웹개발자%20성장을%20위한%20동영상%20RoadMap%20프로그램%20설계%20및%20구현🚀&animation=twinkling&fontSize=23&fontAlignY=40&fontAlign=60&height=250&width=1325&align=center)
 
 <br>
 <br>
@@ -143,3 +142,54 @@ VOUGE는 패션을 주제로 관심이 많은 사람들이 모여 다양한 정�
 | MEMBER     | INT(2)              |   O     |         X         | 사용자 고유 값        | FOREIGN |
 
 <br><br>
+
+## 🖥️ Views
+
+**1. index**<br> 
+ - 프로젝트의 메인화면입니다. 상단의 LOGIN, JOIN 버튼을 클릭하여 로그인 및 회원가입 할 수 있습니다.
+ - header과 aside는 `thymeleaf`의 replace 기능을 사용하여 모든 화면에서 분리된 html 파일을 불러옵니다.
+ - aside의 카테고리와 메인 이미지 하단의 글 목록을 통해 게시글 목록으로 이동할 수 있습니다.
+<img width="1103" alt="Index01" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/9f999a9f-5624-4276-b2a6-79053f10e108">
+
+<br><br>
+
+ **2. Join / Login**<br> 
+  - 회원가입 화면입니다.
+<img width="1106" alt="join" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/f444cd05-47a3-4f57-8b7c-bc128f9f43c2">
+
+<br><br>
+
+  - 로그인 화면입니다.
+  - 로그인 후 index 화면으로 redirect 됩니다.
+  - aside의 상단에 '로그인 후 이용해주세요' 멘트가 사용자의 프로필로 갱신되고 header에 로그아웃 버튼이 활성화 됩니다.
+<img width="1090" alt="login" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/c23fbbad-14a6-4a19-8bd0-0cf8376453d4">
+
+<img width="1116" alt="index02" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/4cc2a9e9-4673-4b6f-b1c4-9cff6b71394a">
+
+<br><br>
+
+ **3. Post list**<br> 
+  - `패션정보` 카테고리의 게시글 목록입니다.
+  - `[]` 안에 숫자를 통해 몇개의 댓글이 있는지 확인 할 수 있으며, 작성자, 작성일, 조회수, 좋아요 개수를 확인할 수 있습니다.
+  - 페이지네이션을 사용하여 구현하였습니다.
+  - 검색폼을 통해 게시글 및 작성자를 검색할 수 있습니다.
+<img width="1105" alt="postlist" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/6c8c4d08-9f46-44e9-a63a-f34e115d8a8a">
+
+<br><br>
+
+ **4. Post detail**<br> 
+  - 게시글의 디테일 화면입니다.
+  - 상단의 카테고리 이름을 통해 해당 카테고리로 이동할 수 있습니다.
+  - 작성자의 닉네임을 클릭 시 작성자의 프로필로 이동할 수 있습니다.
+  - `URL 복사`를 클릭하면 현재 페이지의 URL을 복사할 수 있습니다.
+  - 하단으로 스크롤하면 해당 게시글의 댓글을 확인할 수 있습니다.
+<img width="1098" alt="detail" src="https://github.com/whiteDwarff/SpringBoot-VOUGE/assets/115057117/3561485b-a847-4baa-95fc-4afe0f064f6f">
+
+<br><br>
+
+ **5. Comment**<br> 
+  - 게시글의 디테일 화면에서 스크롤하여 확인할 수 있는 댓글 목록입니다.
+
+
+    
+
